@@ -42,13 +42,15 @@ async fn page_index() -> impl Responder {
     render!("pages/index.html",ctx)
 }
 
-#[post("/echo")]
-async fn echo(req_body: String) -> impl Responder {
-    HttpResponse::Ok().body(req_body)
+#[get("/pages/create")]
+async fn page_create() -> impl Responder {
+    let ctx = Context::new();
+    render!("pages/form.html",ctx)
 }
 
-async fn manual_hello() -> impl Responder {
-    HttpResponse::Ok().body("Hey there!")
+#[post("/pages/save")]
+async fn page_save() -> impl Responder {
+    web::Redirect::to("/pages/")
 }
 
 #[actix_web::main]
@@ -56,9 +58,9 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
             .service(hello)
-            .service(echo)
             .service(page_index)
-            .route("/hey", web::get().to(manual_hello))
+            .service(page_create)
+            .service(page_save)
     })
     .bind(("127.0.0.1", 8080))?
     .run()

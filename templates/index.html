@@ -1,7 +1,11 @@
-<html>
-  <head>
-  </head>
-  <body>
-      <h1>Hello</h1>
-  </body>
-</html>
+{% extends "base.html" %}
+{% block title %}Portal RS{% endblock title %}
+{% block content %}
+    <h1>PortalRS</h1>
+    <p class="important">
+      Welcome to the PortalRS landing page.
+    </p>
+<ul>
+  <li><a href='/pages/'>Pages</a></li>
+</ul>
+{% endblock content %}

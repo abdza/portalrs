@@ -1,7 +1,9 @@
-<html>
-  <head>
-  </head>
-  <body>
-      <h1>Page Listing</h1>
-  </body>
-</html>
+{% extends "base.html" %}
+{% block title %}Portal RS{% endblock title %}
+{% block content %}
+    <h1>Pages Index</h1>
+    <p class="important">
+      List of pages.
+    </p>
+    <a href='/pages/create'>Create</a>
+{% endblock content %}
